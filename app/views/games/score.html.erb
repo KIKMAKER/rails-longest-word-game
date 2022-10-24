@@ -1,0 +1,21 @@
+<div class="container-sm">
+  <div class="container text-center p-3 mb-2 bg-secondary text-white">
+    <h1>YOUR SCORE</h1>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="border border-5 m-4 p-3 w-15">
+      <% if @included %>
+        <% if @english_word %>
+        <p>You found <%= @word %>, an actual English word!</p>
+        <% else %>
+        <p>Sorry mate, <%= @word %> is not actually an English word, according to the Le Wagon dictionary :(</p>
+        <% end %>
+        <% else %>
+        <p>You can't actually make <%= @word %> with <%= @letters.join(", ") %> </p>
+        <% end %>
+      </div>
+    </div>
+  <div class="center">
+    <%= link_to "Play again", new_path, class: "btn btn-dark mt-3 d-grid gap-2 col-6 mx-auto"%>
+  </div>
+</div>

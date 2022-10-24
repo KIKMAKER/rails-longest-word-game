@@ -1,0 +1,17 @@
+
+<div class="container-sm">
+  <div class="container text-center p-3 mb-2 bg-secondary text-white">
+    <h1>A FUN NEW WORD GAME</h1>
+  </div>
+  <div class="d-flex justify-content-center">
+    <% @letters.each do |letter| %>
+      <p class="border border-5 m-3 p-3 w-15"><%= letter%></p>
+    <% end %>
+  </div>
+    <form action="/score" method="POST" data-turbo="false">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :letters, @letters %>
+      <input type="text" name="word" placeholder="Find the longest word" class="form-control mt-3 d-grid gap-2 col-6 mx-auto">
+      <input type="submit" value="Try it!" class="btn btn-dark mt-3 d-grid gap-2 col-6 mx-auto">
+    </form>
+</div>
