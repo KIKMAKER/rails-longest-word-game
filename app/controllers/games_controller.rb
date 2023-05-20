@@ -12,6 +12,8 @@ class GamesController < ApplicationController
     @word = (params[:word] || '').upcase
     @included = included?(@word, @letter)
     @english_word = english_word?(@word)
+    @success_message = 'You found <%= @word %>, an actual English word!'
+
   end
 
   def included?(_word, _letters)
@@ -22,5 +24,13 @@ class GamesController < ApplicationController
     response = URI.open("https://wagon-dictionary.herokuapp.com/#{word}")
     json = JSON.parse(response.read)
     json['found']
+  end
+
+  def successful_result
+    @success_message = 'You found <%= @word %>, an actual English word!'
+  end
+
+  def unsuccessful_result
+    @unsuccessful_message = 'Sorry mate, <%= @word %> is not actually an English word, according to the Le Wagon dictionary :('
   end
 end
